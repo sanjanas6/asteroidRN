@@ -9,9 +9,20 @@ const stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-    <stack.Navigator>
-      <stack.Screen name="Home" component={HomeScreen} />
-      <stack.Screen name="Detail" component={AsteroidData} />
+    <stack.Navigator screenOptions={{
+            headerStyle: {
+              backgroundColor: "#C0C0C0",
+            },
+            headerTintColor: '#0E2038',
+            contentStyle: {}}}>
+      <stack.Screen name="Home" component={HomeScreen} options={{
+            title: "Asteroid App",
+            contentStyle: {backgroundColor: "#DAD5CF"}
+          }} />
+      <stack.Screen name="Detail" component={AsteroidData} options={{
+            title: "Asteroid Information",
+            contentStyle: {backgroundColor: "#DAD5CF"}
+          }} />
     </stack.Navigator>
     </NavigationContainer>
     // <View style={styles.container}>

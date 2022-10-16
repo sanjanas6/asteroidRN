@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
+import { View, Text, TextInput, Button, StyleSheet, ImageBackground } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
 const HomeScreen = ({navigation}) => {
@@ -42,10 +42,15 @@ const HomeScreen = ({navigation}) => {
       value= {id}
       onChangeText={(num) => setId(num)}
       keyboardType="numeric"
+      style={style.InputContainer}
        />
     <View style={style.buttonContainer}>
-       <Button title="Submit" color="grey" onPress={Submit}/>
-       <Button title="RandomID" color="black" onPress={randomID} />
+       <Button title="Submit" color="#213A5C" onPress={Submit} />
+       {/* <Button title="RandomID" color="black" onPress={randomID} /> */}
+    </View>
+    <View style={style.buttonContainer}>
+       {/* <Button title="Submit" color="grey" onPress={Submit} /> */}
+       <Button title="Random" color="#213A5C" onPress={randomID} />
     </View>
     </View>
   )
@@ -60,13 +65,28 @@ const style = StyleSheet.create({
        justifyContent: "center",
        alignItems: "center",
     },
+    image: {
+        flex: 1,
+        justifyContent: "center"
+      },
+    InputContainer:{
+        borderWidth: 2,
+        borderColor: 'white',
+        width: '80%',
+        textAlign: 'center',
+        marginBottom: 20,
+        borderRadius: 10,
+        fontSize: 20,
+        fontWeight: 'bold',
+        backgroundColor: 'white'
+    },
     buttonContainer: {
-        borderRadius: 20,
-        padding: 10,
-        alignItems: 'center',
-        fontSize: 15,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginVertical: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: "row",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
       },
 })
