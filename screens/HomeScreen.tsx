@@ -18,8 +18,8 @@ export default class InputForm extends Component< prop, state>{
                load: false
           }
      }
-     async getData(id: string){
-        
+    //Must call function to get data
+     async getData(id: string){      
       this.setState({load: true})
       try{    
       const {data} = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/${this.state.id}?api_key=L6AW6ZMaTbURc0Kjh0eEPcbJDQmaqlWDjqVSAiHW`);
@@ -37,9 +37,8 @@ export default class InputForm extends Component< prop, state>{
     }
     this.setState({load: false})  
     this.setState({id: ''})
-
  }
-
+    //Function for ID entered By user
     handleSearch() {
       this.setState({load: true})
 
@@ -52,6 +51,8 @@ export default class InputForm extends Component< prop, state>{
       }
       this.getData(this.state.id);
     }
+
+    //Function to get random id
      async randomId() {
       const random = Math.floor(Math.random() * 10);
       this.setState({load: true})    
@@ -74,11 +75,9 @@ render(){
         style={style.InputContainer}
       />
       <View style={style.buttonContainer}>
-        <Button title='getData' color='#213A5C' onPress={this.handleSearch.bind(this)} />
-        {/* <Button title="RandomID" color="black" onPress={randomID} /> */}
+        <Button title='RandomI' color='#213A5C' onPress={this.handleSearch.bind(this)} />
       </View>
       <View style={style.buttonContainer}>
-        {/* <Button title="getData" color="grey" onPress={getData} /> */}
         <Button title='Random' color='#213A5C' onPress={this.randomId.bind(this)} />
       </View>
       </View>
