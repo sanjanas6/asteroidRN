@@ -19,7 +19,7 @@ export default class InputForm extends Component< prop, state>{
           }
      }
     //Must call function to get data
-     async getData(id: string){      
+     async getData(){      
       this.setState({load: true})
       try{    
       const {data} = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/${this.state.id}?api_key=L6AW6ZMaTbURc0Kjh0eEPcbJDQmaqlWDjqVSAiHW`);
@@ -49,7 +49,7 @@ export default class InputForm extends Component< prop, state>{
         );
         return null;
       }
-      this.getData(this.state.id);
+      this.getData();
     }
 
     //Function to get random id
@@ -60,7 +60,7 @@ export default class InputForm extends Component< prop, state>{
       let id = response.data.near_earth_objects[random].id;
       // console.log(id);
       this.setState({id:id});
-      this.getData(id);
+      this.getData();
     }
     
 render(){
@@ -75,7 +75,7 @@ render(){
         style={style.InputContainer}
       />
       <View style={style.buttonContainer}>
-        <Button title='RandomI' color='#213A5C' onPress={this.handleSearch.bind(this)} />
+        <Button title='GetData' color='#213A5C' onPress={this.handleSearch.bind(this)} />
       </View>
       <View style={style.buttonContainer}>
         <Button title='Random' color='#213A5C' onPress={this.randomId.bind(this)} />
